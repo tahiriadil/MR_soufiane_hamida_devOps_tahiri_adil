@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Services{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'core/css/services.css' %}">
+
+    <h1>Nos Services</h1>
+    <div class="row">
+        {% for service in services %}
+        <div class="col-md-4 mb-4">
+            <div class="card service-card">
+                {% if service.image %}
+                <img src="{{ service.image.url }}" class="card-img-top" alt="{{ service.nom }}">
+                {% endif %}
+                <div class="card-body">
+                     <h5 class="card-title">
+                        <a href="{% url 'service_detail' service.id %}">
+                            {{ service.nom }}
+                        </a>
+                     </h5>
+                    <p class="card-text">{{ service.description }}</p>
+                    <p class="card-text"><strong>Prix:</strong> {{ service.prix }} MAD</p>
+                    <p class="card-text"><strong>Durée:</strong> {{ service.duree }} min</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

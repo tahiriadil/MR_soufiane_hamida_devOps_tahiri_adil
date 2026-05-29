@@ -1,0 +1,126 @@
+<!--page pour faire hiritage de gabarit a les autre pages-->
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>{% block title %}{% endblock %}</title>
+
+<link href="{% static 'core/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'core/css/base.css' %}">
+
+</head>
+
+<body class="container mt-4">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-success mb-4">
+
+<a class="navbar-brand" href="{% url 'home' %}">
+<img src="{% static 'core/images/v1033-bb-088.jpg' %}" width="40">
+Centre
+</a>
+
+<ul class="navbar-nav">
+
+<li class="nav-item">
+<a class="nav-link" href="{% url 'service_list' %}">Services</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+</li>
+
+{% if user.is_authenticated %}
+
+<li class="nav-item">
+<a class="nav-link" href="{% url 'rdv_list' %}">Mes RDV</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="{% url 'logout' %}">Logout</a>
+</li>
+
+{% else %}
+
+<li class="nav-item">
+<a class="nav-link" href="{% url 'login' %}">Login</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link" href="{% url 'register' %}">Register</a>
+</li>
+
+{% endif %}
+
+</ul>
+
+</nav>
+
+
+
+
+{% if messages %}
+
+{% for message in messages %}
+
+<div class="alert alert-success">
+{{ message }}
+</div>
+
+{% endfor %}
+
+{% endif %}
+
+
+
+
+
+
+{% block content %}
+
+{% endblock %}
+
+
+<footer class="footer">
+<div class="container">
+<div class="row">
+
+<div class="col-md-4">
+<h5 class="footer-title">Centre Bien-Être</h5>
+<p>
+Plateforme de réservation des services de bien-être :
+massage, spa et relaxation.
+</p>
+</div>
+
+<div class="col-md-4">
+<h5 class="footer-title">Navigation</h5>
+<ul class="list-unstyled">
+<li><a href="https://www.instagram.com" target="_blank"><img src="{% static 'core\images\instagram.png' %}" width="30" height="30"></a>wellness de maroc</li>
+<li><a href="https://workspace.google.com/" target="_blank"><img src="{% static 'core\images\vecteezy_gmail-png-icon_16716465.png' %}" width="30" height="30"></a>wellness@gmail.com</li>
+<li><a href="https://web.facebook.com/" target="_blank"><img src="{% static 'core\images\vecteezy_facebook-png-icon_16716481.png' %}" width="30" height="30"></a>wellness de maroc</li>
+</ul>
+</div>
+
+<div class="col-md-4">
+<h5 class="footer-title">Contact</h5>
+<p>Email : wellness@gmail.com</p>
+<p>Téléphone : +212 621214488</p>
+<p>Adresse : Rabat avenu Akkdale N 55</p>
+</div>
+
+</div>
+
+<div class="footer-bottom">
+  2026 Centre de Bien-Être
+</div>
+
+</div>
+</footer>
+
+
+
+<script src="{% static 'core/bootstrap/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

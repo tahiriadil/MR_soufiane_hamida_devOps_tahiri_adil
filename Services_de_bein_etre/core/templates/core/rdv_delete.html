@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<h2>Confirmation suppression</h2>
+
+<p>
+Voulez-vous vraiment supprimer ce rendez-vous ?
+</p>
+
+<ul>
+
+<li><b>Service:</b> {{ rdv.service }}</li>
+<li><b>Date:</b> {{ rdv.date }}</li>
+<li><b>Heure:</b> {{ rdv.heure }}</li>
+
+</ul>
+
+<form method="post">
+
+{% csrf_token %}
+
+<button class="btn btn-danger">
+Confirmer suppression
+</button>
+
+<a href="{% url 'rdv_list' %}" class="btn btn-secondary">
+Annuler
+</a>
+
+</form>
+
+{% endblock %}

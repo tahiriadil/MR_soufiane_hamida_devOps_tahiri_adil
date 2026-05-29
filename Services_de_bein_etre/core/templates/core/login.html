@@ -1,0 +1,23 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<h2>Login</h2>
+
+<form method="post">
+
+{% csrf_token %}
+
+<input class="form-control mb-2" name="username" placeholder="Username">
+
+<input class="form-control mb-2" type="password" name="password" placeholder="Password">
+
+<button class="btn btn-primary">Login</button>
+
+</form>
+
+{% if error %}
+<p style="color:red">{{ error }}</p>
+{% endif %}
+
+{% endblock %}

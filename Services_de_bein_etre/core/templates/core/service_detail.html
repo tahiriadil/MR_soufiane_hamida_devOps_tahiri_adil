@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<h2>{{ service.nom }}</h2>
+
+{% if service.image %}
+<img src="{{ service.image.url }}" width="400">
+{% endif %}
+
+<p>{{ service.description }}</p>
+
+<p><b>Prix:</b> {{ service.prix }} MAD</p>
+
+<p><b>Durée:</b> {{ service.duree }} minutes</p>
+
+{% if user.is_authenticated %}
+
+<a class="btn btn-success"
+href="{% url 'rdv_create' %}">
+Réserver ce service
+</a>
+
+{% else %}
+
+<a class="btn btn-primary"
+href="{% url 'login' %}">
+Login pour réserver
+</a>
+
+{% endif %}
+
+{% endblock %}

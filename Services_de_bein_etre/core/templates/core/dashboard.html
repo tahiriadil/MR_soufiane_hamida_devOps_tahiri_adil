@@ -1,0 +1,81 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<style>
+#rdvChart{
+    max-width:600px;
+    max-height:300px;
+}
+</style>
+
+<h2>Dashboard</h2>
+
+<div class="row">
+
+<div class="col-md-4">
+<div class="card text-white bg-primary mb-3">
+<div class="card-body">
+<h5 class="card-title">Services</h5>
+<h3>{{ total_services }}</h3>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card text-white bg-success mb-3">
+<div class="card-body">
+<h5 class="card-title">Users</h5>
+<h3>{{ total_users }}</h3>
+</div>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card text-white bg-warning mb-3">
+<div class="card-body">
+<h5 class="card-title">Rendez-vous</h5>
+<h3>{{ total_rdv }}</h3>
+</div>
+</div>
+</div>
+
+</div>
+
+<h3>Statistiques des Rendez-vous</h3>
+
+<canvas id="rdvChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+var ctx = document.getElementById('rdvChart').getContext('2d');
+
+var chart = new Chart(ctx, {
+
+type: 'pie',
+
+data: {
+
+labels: {{ labels|safe }},
+
+datasets: [{
+
+data: {{ data|safe }},
+
+backgroundColor: [
+'blue',
+'green',
+'red'
+]
+
+}]
+
+}
+
+});
+
+</script>
+
+{% endblock %}

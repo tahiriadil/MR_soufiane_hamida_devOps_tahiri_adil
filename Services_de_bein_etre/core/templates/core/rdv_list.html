@@ -1,0 +1,78 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<h2>Mes rendez-vous</h2>
+
+<a class="btn btn-primary mb-3" href="{% url 'rdv_create' %}">
+Nouveau RDV
+</a>
+
+<table class="table">
+
+<tr>
+
+<th>Service</th>
+<th>Date</th>
+<th>Heure</th>
+<th>Statut</th>
+<th>Actions</th>
+
+</tr>
+
+{% for rdv in rendezvous %}
+
+<tr>
+
+<td>{{ rdv.service }}</td>
+
+<td>{{ rdv.date }}</td>
+
+<td>{{ rdv.heure }}</td>
+
+<td>{{ rdv.statut }}</td>
+
+<td>
+
+<a class="btn btn-warning"
+href="{% url 'rdv_update' rdv.id %}">Edit</a>
+
+<a class="btn btn-danger"
+href="{% url 'rdv_delete' rdv.id %}">Delete</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+
+
+
+<div class="mt-3">
+
+{% if rendezvous.has_previous %}
+<a class="btn btn-secondary"
+href="?page={{ rendezvous.previous_page_number }}">
+Previous
+</a>
+{% endif %}
+
+<span class="btn btn-light">
+Page {{ rendezvous.number }} / {{ rendezvous.paginator.num_pages }}
+</span>
+
+{% if rendezvous.has_next %}
+<a class="btn btn-secondary"
+href="?page={{ rendezvous.next_page_number }}">
+Next
+</a>
+{% endif %}
+
+</div>
+
+
+
+{% endblock %}

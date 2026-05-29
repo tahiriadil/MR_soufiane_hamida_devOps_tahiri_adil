@@ -1,0 +1,36 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'core/images/792940-les-etangs-de-corot-renove-spa-phytomer.jpg' %}" class="d-block w-100" alt="image not found">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'core/images/Royal-Mansour-Tamuda-Bay-Luxe-Wellness-Club-52.jpg' %}" class="d-block w-100" alt="image not found">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'core/images/Un-nouvel-espace-bien-etre-a-Paris-01.jpg' %}" class="d-block w-100" alt="image not found">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div><br><br>
+
+<h1>Bienvenue à notre centre</h1>
+<p>
+    Bienvenue sur notre site de bien-être.
+Nous sommes heureux de vous accueillir dans notre espace dédié à la détente et au confort.
+Notre centre vous propose plusieurs services comme le massage, le spa et des soins pour le corps afin de vous aider à vous relaxer et à retrouver votre énergie.
+Prenez le temps de découvrir nos services et de réserver votre rendez-vous facilement en ligne.
+Nous espérons vous offrir une expérience agréable et relaxante.
+</p>
+{% endblock %}
