@@ -16,7 +16,7 @@ def home(request):
 
 def service_list(request):
 
-    services = Service.objects.all()
+    services = Service.objects.all().order_by('id')
 
     paginator = Paginator(services, 6)
     page = request.GET.get('page')
